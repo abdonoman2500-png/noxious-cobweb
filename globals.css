@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --brand: #0f766e;
+  --brand-strong: #0b5f59;
+  --brand-soft: #ccfbf1;
+  --accent: #f59e0b;
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --bubble-in: #ffffff;
+  --bubble-out: #d9fdd3;
+  --danger: #dc2626;
+}
+
+[data-theme="dark"] {
+  --brand: #14b8a6;
+  --brand-strong: #0d9488;
+  --brand-soft: #134e4a;
+  --accent: #fbbf24;
+  --bg: #0b1120;
+  --surface: #111827;
+  --surface-2: #1f2937;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --border: #1f2937;
+  --bubble-in: #1f2937;
+  --bubble-out: #115e59;
+  --danger: #f87171;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", "Noto Kufi Arabic", "Tahoma", system-ui, -apple-system, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.chat-wallpaper {
+  background-color: var(--surface-2);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(15, 118, 110, 0.08), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(245, 158, 11, 0.08), transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(15, 118, 110, 0.06), transparent 45%);
+}
+
+.wallpaper-dusk {
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.18), transparent 45%),
+    radial-gradient(circle at 85% 10%, rgba(236, 72, 153, 0.14), transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(15, 118, 110, 0.16), transparent 50%);
+}
+
+.wallpaper-sand {
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(245, 158, 11, 0.2), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(180, 83, 9, 0.14), transparent 45%);
+}
+
+.wallpaper-mint {
+  background-image:
+    radial-gradient(circle at 10% 80%, rgba(16, 185, 129, 0.2), transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(6, 182, 212, 0.16), transparent 45%);
+}
+
+.wallpaper-plain {
+  background-image: none;
+}
+
+.bubble-in {
+  background: var(--bubble-in);
+  color: var(--text);
+  border-radius: 14px 14px 14px 4px;
+}
+
+[dir="rtl"] .bubble-in {
+  border-radius: 14px 14px 4px 14px;
+}
+
+.bubble-out {
+  background: var(--bubble-out);
+  color: #052e2b;
+  border-radius: 14px 14px 4px 14px;
+}
+
+[dir="rtl"] .bubble-out {
+  border-radius: 14px 14px 14px 4px;
+}
+
+[data-theme="dark"] .bubble-out {
+  color: #ecfeff;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 0.18s ease-out both;
+}
+
+@keyframes ringPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.ring-pulse {
+  animation: ringPulse 1.6s infinite;
+}
+
+.brand-gradient {
+  background-image: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 55%, #0e7490 100%);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
